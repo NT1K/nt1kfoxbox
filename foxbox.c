@@ -173,8 +173,7 @@ void loop(){
                 }
  
                 delay(4*DAHLENGTH);
-                tone(CW, TONEHZ, BEEPLENGTH); // Sends Solid Tone
-                noTone(CW); // Turns off Tone
+                tone(CW, TONEHZ, BEEPLENGTH); // Sends Solid Tone Then Shuts Tone OFF 
                 digitalWrite(TX, LOW);  // Turns off TX
                 digitalWrite(TXLED, LOW);
                 delay(MSGSPACE); // Wait time untill repeat
