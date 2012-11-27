@@ -180,5 +180,9 @@ void loop(){
                 delay(MSGSPACE); // Wait time untill repeat
  
  
+        } else {
+         digitalWrite(CWLED, LOW)
+         digtialWrite(TX, LOW)
+         digitalWrite(TXLED, LOW)
         }
 }
