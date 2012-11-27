@@ -44,19 +44,19 @@ void dit() {
         delay(3*DAHLENGTH);
         digitalWrite(CWLED, LOW);
         noTone(CW);
-        delay(DAHLENGTH)
+        delay(DAHLENGTH);
 }
  
 // Following is the Space Between Letters
  
 void letterBreak() {
-        delay(2*DAHLENGTH)
+        delay(2*DAHLENGTH);
 }
  
 // Following is the Space Between Words
  
 void wordBreak() {
-        delay(4*DAHLENGTH)
+        delay(4*DAHLENGTH);
 }
  
 // Following replaces the each char with its morse code equiv
@@ -139,7 +139,7 @@ void send(char letter) {
 // Following is the setup for the loop
  
 void setup() {
-        pinMode (LED, OUTPUT); // Defines that the LED is an OUTPUT
+        pinMode (CWLED, OUTPUT); // Defines that the LED is an OUTPUT
         pinMode (SW, INPUT); // Defines that the Switch is an INPUT
 }
  
@@ -150,14 +150,14 @@ void loop(){
  
         val = digitalRead(SW); // Looking for information from the switch
  
-        if ((val == HIGH) && old_val == LOW)) {
+        if ((val == HIGH) && (old_val == LOW)) {
                 state = 1 - state;
                 delay (1000);
         }
  
         old_val = val;
  
-        if ((val == LOW) && old_val == HIGH)) {
+        if ((val == LOW) && (old_val == HIGH)) {
                 state = 1 + state;
         }
  
@@ -180,8 +180,8 @@ void loop(){
  
  
         } else {
-         digitalWrite(CWLED, LOW)
-         digtialWrite(TX, LOW)
-         digitalWrite(TXLED, LOW)
+         digitalWrite(CWLED, LOW);
+         digitalWrite(TX, LOW);
+         digitalWrite(TXLED, LOW);
         }
 }
