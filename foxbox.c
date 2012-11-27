@@ -13,6 +13,7 @@ int const CW = 11; // Hook up Microphone to PIN 11
 int const TX = 9; // Hook TX up to PIN 9
 int const SW = 7; // Momentary Pushbutton to PIN 7
  
+int TONEHZ = 700; // Tone of the CW Signal 
 int DAHLENGTH = 120; // Change for faster/slower CW
 int BEEPLENGTH = 5000; // Length of soild tone in ms
 int MSGSPACE = 60000; // Space Between Transmissions
@@ -28,7 +29,7 @@ char message[] = "DE NT1K FOX HUNT K"; //Message Beint Sent
  
 void dah() {
         digitalWrite(CWLED, HIGH); // Turns LED on
-        tone(CW, 700); // Sending out tone at 700hz
+        tone(CW, TONEHZ); // Sending out tone at 700hz
         delay(DAHLENGTH);
         digitalWrite(CWLED, LOW); // Turns off LED
         noTone(CW); // Turns off Tone
@@ -39,7 +40,7 @@ void dah() {
  
 void dit() {
         digitalWrite(CWLED, HIGH);
-        tone(CW, 700);
+        tone(CW, TONEHZ);
         delay(3*DAHLENGTH);
         digitalWrite(CWLED, LOW);
         noTone(CW);
@@ -164,21 +165,19 @@ void loop(){
  
         if (state == 1) {
  
-                digitalWrite(TX, HIGH) // Turns on transmitter PTT
-                digitalWrite(TXLED, HIGH) // Turns on the TX LED
+                digitalWrite(TX, HIGH); // Turns on transmitter PTT
+                digitalWrite(TXLED, HIGH); // Turns on the TX LED
  
                 for (byte j=0; j<sizeof(message);) {
                         send(message[j]);
                 }
  
-                delay(4*DAHLENGTH)
- 
-                tone(CW, 700) // Sends Solid Tone
-                delay(BEEPLENGTH) // Length of tone
-                noTone(CW) // Turns off Tone
-                digitalWrite(TX, LOW)  // Turns off TX
-                digitalWrite(TXLED, LOW)
-                delay(MSGSPACE) // Wait time untill repeat
+                delay(4*DAHLENGTH);
+                tone(CW, TONEHZ, BEEPLENGTH); // Sends Solid Tone
+                noTone(CW); // Turns off Tone
+                digitalWrite(TX, LOW);  // Turns off TX
+                digitalWrite(TXLED, LOW);
+                delay(MSGSPACE); // Wait time untill repeat
  
  
         }
