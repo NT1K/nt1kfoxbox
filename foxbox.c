@@ -14,7 +14,7 @@ int const TX = 9; // Hook TX up to PIN 9
 int const SW = 7; // Momentary Pushbutton to PIN 7
  
 int TONEHZ = 700; // Tone of the CW Signal 
-int DAHLENGTH = 120; // Change for faster/slower CW
+int DITLENGTH = 120; // Change for faster/slower CW
 int BEEPLENGTH = 5000; // Length of soild tone in ms
 int MSGSPACE = 60000; // Space Between Transmissions
  
@@ -23,17 +23,17 @@ int old_val =0;
 int state = 0;
  
  
-char message[] = "DE NT1K FOX HUNT K"; //Message Beint Sent
+char message[] = "s o s sos s o s sos"; //Message Beint Sent
  
 // Following Makes the DAH tone
  
 void dah() {
         digitalWrite(CWLED, HIGH); // Turns LED on
         tone(CW, TONEHZ); // Sending out tone at 700hz
-        delay(DAHLENGTH);
+        delay(3*DITLENGTH);
         digitalWrite(CWLED, LOW); // Turns off LED
         noTone(CW); // Turns off Tone
- 
+        delay(DITLENGTH);
 }
  
 // Following Makes the DIT tone
@@ -41,22 +41,22 @@ void dah() {
 void dit() {
         digitalWrite(CWLED, HIGH);
         tone(CW, TONEHZ);
-        delay(3*DAHLENGTH);
+        delay(DITLENGTH);
         digitalWrite(CWLED, LOW);
         noTone(CW);
-        delay(DAHLENGTH);
+        delay(DITLENGTH);
 }
  
 // Following is the Space Between Letters
  
 void letterBreak() {
-        delay(2*DAHLENGTH);
+        delay(2*DITLENGTH);
 }
  
 // Following is the Space Between Words
  
 void wordBreak() {
-        delay(4*DAHLENGTH);
+        delay(4*DITLENGTH);
 }
  
 // Following replaces the each char with its morse code equiv
@@ -157,9 +157,6 @@ void loop(){
  
         old_val = val;
  
-        if ((val == LOW) && (old_val == HIGH)) {
-                state = 1 + state;
-        }
  
         // When the button is pushed, it will perform the following
  
@@ -168,12 +165,14 @@ void loop(){
                 digitalWrite(TX, HIGH); // Turns on transmitter PTT
                 digitalWrite(TXLED, HIGH); // Turns on the TX LED
  
-                for (byte j=0; j<sizeof(message);) {
+                for (byte j=0; j<sizeof(message); j++) {
                         send(message[j]);
                 }
  
-                delay(4*DAHLENGTH);
-                tone(CW, TONEHZ, BEEPLENGTH); // Sends Solid Tone Then Shuts Tone OFF 
+                delay(4*DITLENGTH);
+                tone(CW, TONEHZ);
+                delay(BEEPLENGTH);
+                noTone(CW);
                 digitalWrite(TX, LOW);  // Turns off TX
                 digitalWrite(TXLED, LOW);
                 delay(MSGSPACE); // Wait time untill repeat
