@@ -23,7 +23,7 @@ int old_val =0;
 int state = 0;
  
  
-char message[] = "s o s sos s o s sos"; //Message Beint Sent
+char message[] = "DE NT1K FOXBOX"; //Message Beint Sent
  
 // Following Makes the DAH tone
  
