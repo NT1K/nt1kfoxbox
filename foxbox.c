@@ -141,6 +141,7 @@ void send(char letter) {
 void setup() {
         pinMode (CWLED, OUTPUT); // Defines that the LED is an OUTPUT
         pinMode (SW, INPUT); // Defines that the Switch is an INPUT
+        pinMode (TXLED, OUTPUT); // Defines that the TX (RED) LED is an Output
 }
  
 // Following is the acutal program using the above information
@@ -167,15 +168,15 @@ void loop(){
  
                 for (byte j=0; j<sizeof(message); j++) {
                         send(message[j]);
-                }
+                }  // Sends Message
  
-                delay(4*DITLENGTH);
-                tone(CW, TONEHZ);
-                delay(BEEPLENGTH);
-                noTone(CW);
+                delay(4*DITLENGTH); // Wait
+                tone(CW, TONEHZ);  // Sends out solid tone
+                delay(BEEPLENGTH); // Wait 
+                noTone(CW);  // Shuts off tone
                 digitalWrite(TX, LOW);  // Turns off TX
-                digitalWrite(TXLED, LOW);
-                delay(MSGSPACE); // Wait time untill repeat
+                digitalWrite(TXLED, LOW); // Turns off TX LED
+                delay(MSGSPACE); // Wait time until repeat
  
  
         } else {
