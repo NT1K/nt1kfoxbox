@@ -3,10 +3,13 @@ http://www.NT1K.com
 My first project ever so give me a break
 
 This program is for FOX HUNTING or RDF in Amateur Radio
-This is setup for the ARDUINO UNO and will send morse code
-and blah blah blah
+With the Arduino, Optocoupler, and a Transceiver, You will be able to active the PTT of a HT, send 
+morse code through the speaker/microphone input, de-activate the PTT and repeat. 
 
-I'm very new to all this so if you see something, please explain like you would to a 5yr old
+Could be also used as a Beacon  
+
+
+Please explain any changes as I am new to the learning process of programmnig.
 
 Thanks - NT1K
 /*
