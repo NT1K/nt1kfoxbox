@@ -14,7 +14,7 @@ int const TX = 9; // Hook TX up to PIN 9
 int const SW = 7; // Momentary Pushbutton to PIN 7
  
 int TONEHZ = 700; // Tone of the CW Signal 
-int DITLENGTH = 120; // Change for faster/slower CW
+int DITLENGTH = 120; // CW Speed, Change for faster/slower CW
 int BEEPLENGTH = 5000; // Length of soild tone in ms
 int MSGSPACE = 60000; // Space Between Transmissions
  
@@ -59,7 +59,7 @@ void wordBreak() {
         delay(4*DITLENGTH);
 }
  
-// Following replaces the each char with its morse code equiv
+// Following replaces each char with its morse code equiv
  
 void send(char letter) {
   switch (letter) {
@@ -142,6 +142,8 @@ void setup() {
         pinMode (CWLED, OUTPUT); // Defines that the LED is an OUTPUT
         pinMode (SW, INPUT); // Defines that the Switch is an INPUT
         pinMode (TXLED, OUTPUT); // Defines that the TX (RED) LED is an Output
+        pinMode (TX, OUTPUT); // Defines TX (PTT)as an Output
+        pinMode (CW, OUTPUT); // Defines CW (Audio) as an Output
 }
  
 // Following is the acutal program using the above information
